@@ -1,4 +1,8 @@
 <?xml version="1.0"?>
+<!--
+24x24 detector for detecting European round red traffic signs.
+Created by Jarmo Puttonen <jarmo.puttonen@gmail.com>
+-->
 <opencv_storage>
 <cascade>
   <stageType>BOOST</stageType>
