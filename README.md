@@ -4,7 +4,7 @@ Tsaraisa
 _Traffic sign automatic recognition and intelligent speed assist._
 
 ![Demo screenshot](https://github.com/putsi/tsaraisa/raw/master/tsaraisa.png "Driving on icy Finnish road")
-Tsaraisa ran with "./tsaraisa.py -s -g -c lbpCascade.xml -M" on image.
+Tsaraisa was run with "./tsaraisa.py -s -g -c lbpCascade.xml -M" on demo screenshot.
 
 What does it do?
 -
@@ -121,6 +121,7 @@ How to improve?
 * NOTE: To create a cascade that detects all speed limits, remove speed limit numbers from positive images (I just left the middle of sign transparent).
 
 **Better keypoint samples**
+* Use better algorithm.
 * Get CAD-pictures of speed limits from Finnish Transport Agency.
 
 **Optimizations**
@@ -128,9 +129,12 @@ How to improve?
 * Use hardware that supports [CUDA](http://opencv.org/platforms/cuda.html), [TBB](https://www.threadingbuildingblocks.org/), and/or [NEON](http://www.arm.com/products/processors/technologies/neon.php) acceleration (Compile OpenCV with selected acceleration method enabled.).
 
 **Known problems**
+* Different webcams require finding correct command line arguments.
 * When using low resolutions, sign detection range is very low.
 * Cascades were trained fastly so not as good as could be.
 
 Licence
 -
 See LICENCE file.
+
+Copyright 2014 Jarmo Puttonen <jarmo.puttonen@gmail.com>.
