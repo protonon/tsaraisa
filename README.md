@@ -3,6 +3,8 @@ Tsaraisa
 
 _Traffic sign automatic recognition and intelligent speed assist._
 
+![Demo screenshot](https://github.com/putsi/tsaraisa/raw/master/tsaraisa.png "Driving on icy Finnish road")
+Tsaraisa ran with "./tsaraisa.py -s -g -c lbpCascade.xml -M" on image.
 
 What does it do?
 -
