@@ -127,7 +127,6 @@ How to improve?
 
 **Known problems**
 * When using low resolutions, sign detection range is very low.
-* Sometimes FLANN-algorithm results in "Assertion Failed" or "Unsupported format or combination of formats" error and returns lots of false positives.
 * Cascades were trained fastly so not as good as could be.
 
 Licence
