@@ -1,27 +1,30 @@
-# Tsaraisa
-## Traffic sign automatic recognition and intelligent speed assist.
----
-## What does it do?
+Tsaraisa
+-
 
+_Traffic sign automatic recognition and intelligent speed assist._
+
+
+What does it do?
+-
 * Detect traffic signs.
 * Recognize speed limits in signs.
 * (optional) Compare GPS-speed to speed limit.
 * (optional) Run user command when overspeeding.
 
-## How?
-
-### GPS-class
+How?
+-
+**GPS-class**
 * Uses threading to update GPS-info automatically.
 * Gets speed from GPS-daemon using python bindings.
 
-### Frame handling
+**Frame handling**
 * Reads frame from webcam.
 * Converts frame to grayscale with cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY).
 * (optional) Morphological Open/close.
 * (optional) Equalizes histograms with cv2.equalizeHist().
 * Downscale frame with multiplier n.
 
-### Traffic sign detection
+**Traffic sign detection**
 * Uses LBP- or HAAR-cascade to detect speed signs.
 * LBP-cascade was trained with 2000 positive and 1000 negative images.
   * Negative image is image of road without speed limit sign.
@@ -29,31 +32,33 @@
 * LBP- and HAAR-detection allows great differences in lightning.
 * LBP- and HAAR-detection works great on low performance machines.
 
-### Recognizing speed limits
+**Recognizing speed limits**
 * Uses Fast Approximate Nearest Neighbor Search Library feature matching.
 * Creates "keypoints" of detected sign and compares them to all known speed limits (files in data-folder).
 * Keypoint match distances need to be inside a threshold.
 * Match with biggest proper keypoint amount will be returned.
 * It is fast and pretty accurate with different lightning conditions.
 
-### Speed assist
+**Speed assist**
 * When new speed limit is detected it is added as current speed limit.
 * After every frame script compares current speed to current speed limit.
 * Script runs specified command when overspeeding (e.g. "beep").
 
-## Requirements
-### Required software
+Requirements
+-
+**Required software**
 * OpenCV >=3.0.0
 * Python >=2.7.3
 * LibAV >=0.8.10
 * (optional) gpsd && python-gps
 * (optional) V4L2 1.0.1
 
-### Required hardware
+**Required hardware**
 * Webcam or some other video-source.
 * (optional) GPS Module BU-353
 
-## Usage
+Usage
+-
 ```
 usage: tsaraisa.py [-h] [-d SOURCE] [-g] [-o COMMAND] [-c CASCADE] [-k MINKP]
                  [-D DOWNSCALE] [-f FLANNTHRESHOLD] [-F CHECKS] [-t TREES]
@@ -97,13 +102,14 @@ optional arguments:
   -s, --showvid         Show output video with detections.
 ```
 
-## Accuracy and performance
+Accuracy and performance
+-
 * Very low false positives with LBP- and HAAR-cascades.
 * Plenty of false positives with FLANN-recognition.
 
-## How to improve?
-
-### Better cascade
+How to improve?
+-
+**Better cascade**
 * Get proper negative images (atleast 2000).
 * Get proper positive images (atleast 2000).
 * Positives and negatives on every weather condition.
@@ -112,17 +118,18 @@ optional arguments:
 * NOTE: Training LBP-cascade requires usually hours, HAAR-cascade days.
 * NOTE: To create a cascade that detects all speed limits, remove speed limit numbers from positive images (I just left the middle of sign transparent).
 
-###  Better keypoint samples
+**Better keypoint samples**
 * Get CAD-pictures of speed limits from Finnish Transport Agency.
 
-### Optimizations
+**Optimizations**
 * Convert to C++ (1-10% increase in performance).
 * Use hardware that supports [CUDA](http://opencv.org/platforms/cuda.html), [TBB](https://www.threadingbuildingblocks.org/), and/or [NEON](http://www.arm.com/products/processors/technologies/neon.php) acceleration (Compile OpenCV with selected acceleration method enabled.).
 
-## Known problems
+**Known problems**
 * When using low resolutions, sign detection range is very low.
 * Sometimes FLANN-algorithm results in "Assertion Failed" or "Unsupported format or combination of formats" error and returns lots of false positives.
 * Cascades were trained fastly so not as good as could be.
 
-## Licence
+Licence
+-
 See LICENCE file.
