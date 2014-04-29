@@ -3,6 +3,7 @@ Tsaraisa
 
 _Traffic sign automatic recognition and intelligent speed assist._
 
+[![endorse](http://api.coderwall.com/putsi/endorsecount.png)](http://coderwall.com/putsi)
 ![Demo screenshot](https://github.com/putsi/tsaraisa/raw/master/tsaraisa.png "Driving on icy Finnish road")
 Tsaraisa was run with "./tsaraisa.py -s -g -c lbpCascade.xml -M" on demo screenshot.
 
